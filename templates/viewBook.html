@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <meta charset="UTF-8">
+    <title>books</title>
+</head>
+<body>
+<div class="container">
+    <h1>Books In Shelf</h1>
+      <div class="container-fluid float-sm-end">
+          <div class=" text-bg-success ">
+    <a href="{% url 'add_book' %}">Add other Books</a>
+              </div>
+</div>
+    <ul>
+        {% for y in book %}
+            <li>
+            <h3>{{ y.title }}</h3>
+            <p>{{ y.author }}</p>
+            <p>{{ y.isbn }}</p>
+            <p>{{ y.summary }}</p>
+            <p>{{ y.genre }}</p>
+            <p>{{ y.publish_date }}</p>
+            </li>
+            <a href="{% url 'update_book' y.id %}">edit book details </a>
+            <p> </p>
+            <a href="{% url 'delete_book' y.id %}">delete book</a>
+            <p> </p>
+
+        {% endfor %}
+
+    </ul>
+</div>
+
+
+</body>
+</html>
